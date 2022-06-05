@@ -1,0 +1,4 @@
+普通的javaweb 很多servlet，一个需求一个servlet类=》
+一类数据用一个大的servlet 用switch，将一个关键字放到request里，在java中取出，用switch区分，分别调用这个大的servlet的不同方法=》
+一个servlet，用反射技术，根据传过来的关键字，分别调用这个大的servlet的不同方法 可以方便追加新的业务需求，method.invoke（this,req,resp).=》
+很多servlet的外面加一层dispatcherservlet（中央控制器，核心控制器）。后面的不同的servlet都可以叫做XXXcontroller。
