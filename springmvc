@@ -2,3 +2,6 @@
 一类数据用一个大的servlet 用switch，将一个关键字放到request里，在java中取出，用switch区分，分别调用这个大的servlet的不同方法=》
 一个servlet，用反射技术，根据传过来的关键字，分别调用这个大的servlet的不同方法 可以方便追加新的业务需求，method.invoke（this,req,resp).=》
 很多servlet的外面加一层dispatcherservlet（中央控制器，核心控制器）。后面的不同的servlet都可以叫做XXXcontroller。
+dispatcherservlet(中央控制器）：1。根据请求的url，获取servletpath，之后截取字符串，解析一个名字（也就是bean的名字）
+                             2.加载解析配置文件，从配置文件中获得一堆bean，之后实例化（反射），放到一个map里<beanname,bean实例>.
+                             3.根据第一步的servletpath得到的bean名字找到bean实例， 再通过request带来的关键字，确定调用的method.invoke（this,req,resp).=》方法。
