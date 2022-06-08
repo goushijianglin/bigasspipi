@@ -22,5 +22,13 @@ dispatcherservlet(中央控制器）：1。根据请求的url，获取servletpat
     常见错误 argument type mismatch 参数类型不匹配
     
     
-**model1** jsp 里面包含：1.html，css,js 2.java代码 和数据库连接的 3.java代码 将java数据展示在页面上的。
-**model2** 
+**model1** **model2** =》 jsp 里面包含：1.html，css,js 2.java代码 和数据库连接的 3.java代码 将java数据展示在页面上的。
+
+# **mvc**
+Model模型（1.pojo,vo 2.DAO 3.Bo） 
+    区分业务对象BO和数据访问对象DAO
+        1）DAO中的方法都是单精度方法，一个方法只考虑一个操作，添加查询。。。
+        2）BO中的方法属于业务方法，实际的业务是比较复杂的，都是DAO里面的方法组合而成 粒度比较粗
+        
+View视图（数据展示，交互） 
+Controller控制器（处理通过视图发的请求，具体业务还是要借助模型）
