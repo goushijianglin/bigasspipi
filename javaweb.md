@@ -37,10 +37,24 @@ View视图（数据展示，交互）
 Controller控制器（处理通过视图发的请求，具体业务还是要借助模型）  
 
 # **IOC**
-  1.耦合，依赖
+  ### 1.耦合，依赖
    依赖指的是xxx离不开xxx
    在软件系统中，层与层依赖，也称为耦合。  系统构架或设计的原则是：高内聚 低耦合.  
-    层内部应该是高度聚合的，层与层之间应该是低耦合,理想情况下是0耦合。  
+    层内部应该是高度聚合的，层与层之间应该是低耦合,理想情况下是0耦合。 
+  ### 2.Ioc控制反转/DI依赖注入  
+  ##### 控制反转：  
+  1）之前的servlet中 要创建service对象，fruitService= new FruitServiceImpl();  
+    如果在servlet中的方法内部创建，那么这个new的对象的作用域（生命周期）就应该是这个方法级别。  
+    如果是在类的内部创建，则new的对象时servlet的成员变量，那么他的生命周期就是这个servlet的实例级别。
+  2）之后在applicationContext.xml中定义了这个fruitService。然后通过解析xml，反射创建fruitService实例，存放在beanMap（容器）中，这个beanMap在一个BeanFactory中。
+     因此 我们改变了service，dao实例的生命周期，控制权从程序员转移到BeanFactory中。即为控制反转。  
+  ##### 依赖注入：
+  1）之前我们在控制层的代码 FruitService fruitService= new FruitServiceImpl();  则控制层和service层存在耦合  
+  2）之后 我们将控制层的代码改为 FruitService fruitService=null；在配置文件（applicationContext.xml）中配置：  
+  <bean id="fruit class="FruitController">
+      <property name="fruitService" ref="fruitService"/>  
+  </bean>
+  通过解析xml,将beanMap里生成的ref（fruitService）对应的实例，注入（反射赋值）到FruitController内的名为name（fruitService）的field内。实现注入。
     
   
   
