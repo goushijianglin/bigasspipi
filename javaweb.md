@@ -55,7 +55,7 @@ Controller控制器（处理通过视图发的请求，具体业务还是要借�
            <bean id="fruit class="FruitController">  
               <property name="fruitService" ref="fruitService"/>  
            </bean>
-           ```
+           ```   
   通过解析xml,将beanMap里生成的ref（fruitService）对应的实例，注入（反射赋值）到FruitController内的名为name（fruitService）的field内。实现注入。
     
   
