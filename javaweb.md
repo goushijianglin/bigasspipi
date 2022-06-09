@@ -51,9 +51,11 @@ Controller控制器（处理通过视图发的请求，具体业务还是要借�
   ##### 依赖注入：
   1）之前我们在控制层的代码 FruitService fruitService= new FruitServiceImpl();  则控制层和service层存在耦合  
   2）之后 我们将控制层的代码改为 FruitService fruitService=null；在配置文件（applicationContext.xml）中配置：  
+           ```xml 
            <bean id="fruit class="FruitController">  
               <property name="fruitService" ref="fruitService"/>  
            </bean>
+           ```
   通过解析xml,将beanMap里生成的ref（fruitService）对应的实例，注入（反射赋值）到FruitController内的名为name（fruitService）的field内。实现注入。
     
   
