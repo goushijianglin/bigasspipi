@@ -15,11 +15,6 @@
 * 一个中间操作链，对数据源的数据进行处理（不会执行）    
 * 一旦执行终止操作，就执行中间操作链，并产生结果，之后不在会被使用。  
 
-##### 使用  
-implements filter  
-重写dofilter 里面的加上放行的语句  
-```java 
-filterChain.doFilter(servletRequest,servletResponse)  
-```
+
 
 
