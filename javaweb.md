@@ -57,6 +57,17 @@ Controller控制器（处理通过视图发的请求，具体业务还是要借�
            </bean>
            ```   
   通过解析xml,将beanMap里生成的ref（fruitService）对应的实例，注入（反射赋值）到FruitController内的名为name（fruitService）的field内。实现注入。
+
+
+
+# filter  
+
+##### 使用  
+implements filter接口 
+重写dofilter 里面的加上放行的语句  
+```java 
+filterChain.doFilter(servletRequest,servletResponse)  
+```
     
   
   
