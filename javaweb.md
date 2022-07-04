@@ -64,10 +64,17 @@ Controller控制器（处理通过视图发的请求，具体业务还是要借�
 
 ##### 使用  
 implements filter接口   
-重写dofilter 里面的加上放行的语句  
+重写dofilter init doFilter(里面的加上放行的语句) destroy    
 ```java 
 filterChain.doFilter(servletRequest,servletResponse)  
 ```
+配置filter可以用注解@WebFilter，也可以是用xml<filter><filter-mapping>  
+
+##### 过滤器链
+  
+  
+
+
     
   
   
