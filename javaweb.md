@@ -60,7 +60,7 @@ Controller控制器（处理通过视图发的请求，具体业务还是要借�
 
 
 
-# filter  
+# **filter**  
 
 ##### 使用  
 implements filter接口   
@@ -76,9 +76,38 @@ filterChain.doFilter(servletRequest,servletResponse)
   多个过滤器按照注解配置的时候，是按照全类名的排序  
   如果是按照配置文件配置，是按照顺序谁先配置谁先过滤
   
-# 事务管理
+# **事务管理**
+  
 #### 事务管理以业务层为单位，不能以dao层的单精度方法为单位
-  service是一个整体 其中dao操作要一起成功，如果有失败的则一起回滚，
+  service是一个整体 其中dao操作要一起成功，如果有失败的则一起回滚。
+  
+  
+  简单版 在service中开启事物管理
+  ```java
+  //开启事务
+  try{
+  service;//一连串业务操作dao
+  commit();//提交
+  }catch(Exception e){
+  rollback()//回滚
+  }
+  ```
+  
+  实用版 用过滤器，实现事务管理（OpenSessionInViewFilter)
+  
+  ```java
+  try{
+  autocommit(false);//关闭自动提交
+  放行();//放行到servlet->service->一堆dao
+  commit();
+  }
+ catch(exception e){
+  rollback();
+  }
+  ```
+**但是上述伪代码有问题，一堆dao要用一个connection，如果不用一个的话 随着connection关闭，就自动commit**
+  所以 我们要用Threadlocal 中有两个方法 set(conn);get(conn);  
+  ->使用它可以让一堆dao使用同一个connectionId。具体自己研究
   
 
 
