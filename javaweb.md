@@ -76,6 +76,9 @@ filterChain.doFilter(servletRequest,servletResponse)
   多个过滤器按照注解配置的时候，是按照全类名的排序  
   如果是按照配置文件配置，是按照顺序谁先配置谁先过滤
   
+# 事务管理
+#### 事务管理以业务层为单位，不能以dao层的单精度方法为单位
+  service是一个整体 其中dao操作要一起成功，如果有失败的则一起回滚，
   
 
 
