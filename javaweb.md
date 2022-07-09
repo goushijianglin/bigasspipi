@@ -105,9 +105,20 @@ filterChain.doFilter(servletRequest,servletResponse)
   rollback();
   }
   ```
-**但是上述伪代码有问题，一堆dao要用一个connection，如果不用一个的话 随着connection关闭，就自动commit**
-  所以 我们要用Threadlocal 中有两个方法 set(conn);get(conn);  
-  ->使用它可以让一堆dao使用同一个connectionId。具体自己研究
+**但是上述伪代码有问题，一堆dao要用一个connection，如果不用一个的话 随着connection关闭，就自动commit**  
+  解决办法-> 我们要用Threadlocal(下面详细描述）中有两个方法 set(conn);get(conn);  
+  ->使用它可以让一堆dao使用同一个connectionId。   
+#### 用到的组件(pro20里面）  
+  -OpenSessionInViewFilter  
+  -TransactionManager  
+  -ConnUtil  
+  -BaseDAO  
+
+####ThreadLocal  
+  -get();  
+  -set(obj);
+ c称之为本地线程
+ 
   
 
 
