@@ -114,10 +114,20 @@ filterChain.doFilter(servletRequest,servletResponse)
   -ConnUtil  
   -BaseDAO  
 
-####ThreadLocal  
+#### ThreadLocal  
   -get();  
   -set(obj);
- c称之为本地线程
+ ThreadLocal称之为本地线程,set将ThreadLocal对象存在线程的map（线程都维护着一个独自的map容器）上，get方法早当前线程获取数据。  
+  
+# *监听器Listener*  
+  
+1. ServletContextListener - (观察者模式）监听ServletContext对象的创建和销毁    
+2. HttpSessionListener - 监听HttpSession对象的创建和销毁   
+3. ServletRequestListener - 监听ServletRequest对象的创建和销毁  
+4. ServletContextAttributeListener
+5. HttpSessionAttributeListener - 监听HttpSession对象的创建和销毁   
+6. RequestAttributeListener - 监听ServletRequest对象的创建和销毁
+
  
   
 
